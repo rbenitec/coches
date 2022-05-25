@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@FeignClient(name = "car-service", url = "http://localhost:8002/car")
+//@FeignClient(name = "car-service", url = "http://localhost:8002/car")  //  <--- Sin eureka
+
+@FeignClient(name = "car-service")  //  <--- Con eureka, se quita la Url y aque esta registrado en eureka.
 public interface CarFeingClient {
     @PostMapping()
     Car save(@RequestBody Car car);
