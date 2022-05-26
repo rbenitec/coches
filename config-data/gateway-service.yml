@@ -1,5 +1,6 @@
 server:
   port: 8080
+
 eureka:
   client:
     fetch-registry: true
@@ -8,22 +9,23 @@ eureka:
       default-zone: http://localhost:8761/eureka
   instance:
     hostname: localhost
+
 spring:
   cloud:
     gateway:
       discovery:
         locator:
-          enable: true
+          enabled: true
       routes:
         - id: user-service
           uri: lb://user-service
           predicates:
-            - path=/user/**
+            - Path=/user/**
         - id: car-service
           uri: lb://car-service
           predicates:
-            - path=/car/**
+            - Path=/car/**
         - id: bike-service
           uri: lb://bike-service
           predicates:
-            - path=/bike/**
+            - Path=/bike/**
