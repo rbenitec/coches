@@ -8,8 +8,7 @@ import java.util.List;
 
 //@FeignClient(name = "bike-service", url = "http://localhost:8003/bike")  // <--- Sin Eureka
 
-@FeignClient(name = "bike-service")  // <--- Con Eureka
-
+@FeignClient(name = "bike-service", path = "/bike")  // <--- Con Eureka
 public interface BikeFeingClient {
 
     //Para gurdar un Bike de un usuario

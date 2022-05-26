@@ -44,12 +44,14 @@ public class UserService {
     //Se agrego, quiero obtener los carros del usuario // Se usa Rest Template
 
     public List<Car> getCars(int userId){
-        List<Car> cars = restTemplate.getForObject("http://localhost:8002/car/byuser/"+userId, List.class);
+//        List<Car> cars = restTemplate.getForObject("http://localhost:8002/car/byuser/"+userId, List.class); // <----sin eureka
+        List<Car> cars = restTemplate.getForObject("http://car-service/car/byuser/"+userId, List.class); // <----con eureka
         return cars;
     }
 
     public List<Bike> getBikes(int userId){
-        List<Bike> bikes = restTemplate.getForObject("http://localhost:8003/bike/byuser/"+userId, List.class);
+//        List<Bike> bikes = restTemplate.getForObject("http://localhost:8003/bike/byuser/"+userId, List.class);// <----sin eureka
+        List<Bike> bikes = restTemplate.getForObject("http://bike-service/bike/byuser/"+userId, List.class);
         return bikes;
     }
 
